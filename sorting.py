@@ -47,16 +47,20 @@ def bubble_sort(values):
 
                 if not swapped:
                     break
+    plt.ioff()
+    plt.show()
+
     return values
 
 
 
 def main():
     values = random_numbers(100)
+    values1 = random_numbers(10)
     sorted_by_piece = selection_sort(values)
     print(sorted_by_piece)
 
-    bubbles = bubble_sort(values)
+    bubbles = bubble_sort(values1)
     print(bubbles)
 
 
