@@ -1,3 +1,5 @@
+from sorting import random_numbers
+
 class StudentsGrades:
     def __init__(self, scores):
         self.scores = scores
@@ -46,22 +48,28 @@ class StudentsGrades:
         return scores
 
 
+def main():
+    results = StudentsGrades([85, 42, 91, 67, 50, 73, 100, 38, 58])
+    print(f"Test psalo: {results.count()} studentů")
 
+    for i in range(results.count()):
+        points = results.get_by_index(i)
+        grade = results.get_grade(i)
+        print(f"Student {i}: {points} points – {grade}")
 
-results = StudentsGrades([85, 42, 91, 67, 50, 73, 100, 38, 58])
+    print(f"Studenti s indexi: {results.find(100)} měl/měli 100 bodů.")
+    print(f"Vysledky vzestupně {results.get_sorted()}")
 
-print(results.count())          # 9
-print(results.get_by_index(2))  # 91
-print(results.scores)           # [85, 42, 91, 67, 50, 73, 100, 38, 58]
+    random_results = StudentsGrades(random_numbers(30, 0, 100))
+    print(f"Test psalo: {random_results.count()} studentů")
 
-print(results.get_grade(2))  # A (91 bodů)
-print(results.get_grade(6))  # A (100 bodů)
-print(results.get_grade(7))  # F (38 bodů)
+    for i in range(random_results.count()):
+        points = random_results.get_by_index(i)
+        grade = random_results.get_grade(i)
+        print(f"Student {i}: {points} points – {grade}")
 
-print(results.find(100))  # [6]
-print(results.find(50))   # [4]
-print(results.find(77))   # []
+    print(f"Studenti s indexi: {random_results.find(100)} měl/měli 100 bodů.")
+    print(f"Vysledky vzestupně {random_results.get_sorted()}")
 
-print(results.get_grade(2))  # A (91 bodů)
-print(results.get_grade(6))  # A (100 bodů)
-print(results.get_grade(7))  # F (38 bodů)
+if __name__ == "__main__":
+    main()
